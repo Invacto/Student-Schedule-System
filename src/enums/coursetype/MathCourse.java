@@ -1,3 +1,5 @@
+package enums.coursetype;
+
 public enum MathCourse {
     ALGEBRA_1,
     ALGEBRA_2,

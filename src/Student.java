@@ -2,22 +2,25 @@ import java.time.LocalDate;
 
 public class Student {
 
-    private Name fullName;
-    private final OSIS ID;
+    private final int ID;
+    private final Name fullName;
     private LocalDate dob;
+    private int grade;
+
     private Schedule schedule;
 
-    public Student(Name fullName, OSIS id, LocalDate dob) {
+    public Student(Name fullName, int ID, LocalDate dob, int grade) {
         this.fullName = fullName;
-        this.ID = id;
+        this.ID = ID;
         this.dob = dob;
+        this.grade = grade;
     }
 
     public Name getFullName() {
         return fullName;
     }
 
-    public OSIS getID() {
+    public int getID() {
         return ID;
     }
 
@@ -31,6 +34,7 @@ public class Student {
         str += "Name: " + fullName;
         str += "\nOSIS: " + ID;
         str += "\nDate Of Birth: " + dob;
+        str += "\nGrade: " + grade;
 
         return str;
     }

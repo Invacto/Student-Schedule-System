@@ -1,3 +1,5 @@
+package enums.coursetype;
+
 public enum LOTECourse {
     SPANISH,
     ITALIAN,

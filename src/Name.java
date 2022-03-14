@@ -4,8 +4,8 @@ public class Name {
     private String lastName;
 
     public Name(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName= lastName;
+        this.firstName = firstName.toUpperCase();
+        this.lastName = lastName.toUpperCase();
     }
 
     public String getFirstName() {
@@ -20,7 +20,7 @@ public class Name {
     public String toString() {
         String str = "";
 
-        str += firstName + " " + lastName;
+        str += lastName + ", " + firstName;
 
         return str;
     }

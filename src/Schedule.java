@@ -6,4 +6,10 @@ public class Schedule {
         courses = new Course[numOfPeriods];
     }
 
+    public int getNumOfPeriods() {
+        return courses.length;
+    }
+
+
+
 }

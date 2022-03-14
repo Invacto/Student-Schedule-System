@@ -1,3 +1,5 @@
+package enums.coursetype;
+
 public enum SocialStudiesCourse {
     WORLD_HISTORY,
     GLOBAL_HISTORY,
