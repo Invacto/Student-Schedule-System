@@ -7,6 +7,6 @@ public enum ClassType {
     SCIENCE,
     FOREIGN_LANGUAGE,
     HEALTH,
-    ART_MUSIC,
+    ART,
     LUNCH
 }

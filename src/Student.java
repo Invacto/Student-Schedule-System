@@ -14,6 +14,8 @@ public class Student {
         this.ID = ID;
         this.dob = dob;
         this.grade = grade;
+
+        schedule = null;
     }
 
     public Name getFullName() {
@@ -26,6 +28,10 @@ public class Student {
 
     public LocalDate getDob() {
         return dob;
+    }
+
+    public void appendSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     public String toString() {
