@@ -38,7 +38,8 @@ public enum CourseType {
     US_GOVERNMENT(ClassType.SOCIAL_STUDIES, true),
     ECONOMICS(ClassType.SOCIAL_STUDIES, true),
     CAFE(ClassType.LUNCH, false),
-    MEZZ(ClassType.LUNCH, false);
+    MEZZ(ClassType.LUNCH, false),
+    FRESHMAN_ADVISORY(ClassType.HEALTH, false);
 
     private final ClassType classType;
     private final boolean isElective;

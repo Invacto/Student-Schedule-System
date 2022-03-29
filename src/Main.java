@@ -1,5 +1,6 @@
 import enums.coursetype.CourseType;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -25,6 +26,16 @@ public class Main {
         Course english11 = new Course(CourseType.ENGLISH11);
 
         Student student = new Student(new Name("Nikita", "Masenzov"), 123456789, LocalDate.of(2005, 4, 15), 11);
+
+        ArrayList<CourseType> completedCourseTypes = new ArrayList<>();
+        completedCourseTypes.add(CourseType.ENGLISH09);
+        completedCourseTypes.add(CourseType.ENGLISH10);
+        completedCourseTypes.add(CourseType.ALGEBRA_2);
+        completedCourseTypes.add(CourseType.AP_CSP);
+        completedCourseTypes.add(CourseType.CHEMISTRY);
+        completedCourseTypes.add(CourseType.GLOBAL_HISTORY);
+
+        student.setCompletedCourses(completedCourseTypes);
 
         Schedule schedule = new Schedule(10, 10);
 
