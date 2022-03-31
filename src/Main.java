@@ -63,8 +63,5 @@ public class Main {
 
         schedule.printSchedule();
 
-        //System.out.println(schedule.getPeriod(7, 9).getName());
-
-
     }
 }

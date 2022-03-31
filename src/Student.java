@@ -12,6 +12,8 @@ public class Student {
 
     private ArrayList<CourseType> completedCourses;
 
+    private ArrayList<CourseType> electives;
+    private ArrayList<CourseType> currentCourses;
     private Schedule schedule;
 
     public Student(Name fullName, int ID, LocalDate dob, int grade, ArrayList<CourseType> completedCourses) {
@@ -20,6 +22,7 @@ public class Student {
         this.dob = dob;
         this.completedCourses = completedCourses;
 
+        currentCourses = null;
         schedule = null;
     }
 
@@ -30,6 +33,7 @@ public class Student {
         this.dob = dob;
         this.grade = grade;
 
+        currentCourses = null;
         completedCourses = null;
         schedule = null;
     }
@@ -48,6 +52,26 @@ public class Student {
 
     public LocalDate getDob() {
         return dob;
+    }
+
+    public ArrayList<CourseType> getCurrentCourses() {
+        return currentCourses;
+    }
+
+    public ArrayList<CourseType> getCompletedCourses() {
+        return completedCourses;
+    }
+
+    public void setElectives(ArrayList<CourseType> electives) {
+        this.electives = electives;
+    }
+
+    public ArrayList<CourseType> getElectives() {
+        return electives;
+    }
+
+    public void setCurrentCourses(ArrayList<CourseType> currentCourses) {
+        this.currentCourses = currentCourses;
     }
 
     public void setCompletedCourses(ArrayList<CourseType> completedCourses) {

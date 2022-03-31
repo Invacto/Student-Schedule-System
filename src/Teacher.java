@@ -1,13 +1,25 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Teacher {
 
     private Name fullName;
     private int id;
     private LocalDate dob;
+    private ArrayList<Period> assignedPeriods;
 
     //Might scrap the idea of a teacher Schedule,
     private TeacherSchedule schedule;
+
+    public Teacher(Name fullName, int id, LocalDate dob, ArrayList<Period> assignedPeriods) {
+        this.fullName = fullName;
+        this.id = id;
+        this.dob = dob;
+        this.assignedPeriods = assignedPeriods;
+
+        schedule = null;
+    }
 
     public Teacher(Name fullName, int id, LocalDate dob) {
         this.fullName = fullName;
