@@ -97,7 +97,7 @@ public class Program {
 
         student.setCompletedCourses(completedCourses);
 
-        CourseGenerator.generateSchedule(student);
+        CourseGenerator.generateCourse(student);
 
         CourseGenerator.printCourses(student);
 

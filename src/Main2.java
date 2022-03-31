@@ -18,7 +18,7 @@ public class Main2 {
         ArrayList<CourseType> electives = new ArrayList<>();
         electives.add(CourseType.BIOLOGY);
         electives.add(CourseType.CREATIVE_WRITING);
-        electives.add(CourseType.CHINESE);
+        electives.add(CourseType.CHINESE1);
         electives.add(CourseType.CAPSTONE);
         electives.add(CourseType.BAND);
 
@@ -26,7 +26,7 @@ public class Main2 {
 
         student.setCompletedCourses(completed);
 
-        CourseGenerator.generateSchedule(student);
+        CourseGenerator.generateCourse(student);
 
         for (CourseType courseType : student.getCurrentCourses()) {
             System.out.println(courseType.toString());

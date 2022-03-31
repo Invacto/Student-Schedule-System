@@ -10,7 +10,7 @@ public class CourseGenerator {
 
     private CourseGenerator() { }
 
-    public static void generateSchedule(Student student) {
+    public static void generateCourse(Student student) {
 
         int coursesLimit = 10;
         int currentNumOfCourses = 0;

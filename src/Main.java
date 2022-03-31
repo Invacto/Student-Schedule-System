@@ -19,7 +19,7 @@ public class Main {
         Course preCalc = new Course(CourseType.PRE_CALCULUS);
         Course cafe = new Course(CourseType.CAFE);
         Course gym = new Course(CourseType.GYM);
-        Course italian = new Course(CourseType.ITALIAN);
+        Course italian = new Course(CourseType.ITALIAN1);
         Course mezz = new Course(CourseType.MEZZ);
         Course apCSA = new Course(CourseType.AP_CSA);
         Course usHistory = new Course(CourseType.US_HISTORY);
@@ -62,6 +62,9 @@ public class Main {
         schedule.setPeriod(period10, 10);
 
         schedule.printSchedule();
+
+        System.out.println(schedule.getPeriod(5, 7).getCourse().getCourseType());
+
 
     }
 }
