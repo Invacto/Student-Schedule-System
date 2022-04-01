@@ -1,26 +1,33 @@
 import enums.ClassType;
-import enums.coursetype.CourseType;
+import enums.CourseType;
+import enums.ForeignLangType;
 
 import java.util.ArrayList;
 
 public class CourseGenerator {
 
     private static final CourseType[] COURSE_TYPES_LIST = CourseType.values();
-    private static ArrayList<CourseType> coursesToTake;
 
     private CourseGenerator() { }
 
+    /**
+     * Assigns the student an ArrayList of Courses based on students criteria of information
+     *
+     * @param student The Student object to assign the Courses
+     */
     public static void generateCourse(Student student) {
 
         int coursesLimit = 10;
         int currentNumOfCourses = 0;
 
-        coursesToTake = new ArrayList<>();
+        ArrayList<CourseType> coursesToTake = new ArrayList<>();
 
-        boolean hasMath = false, hasScience = false, hasEnglish = false, hasSocialStudies = false;
+        boolean hasMath = false, hasScience = false, hasEnglish = false, hasSocialStudies = false, hasLang = false;
         boolean isMathDone = false, isScienceDone = false;
 
         int grade = student.getGrade();
+
+        ForeignLangType langTypePreference = student.getLangTypePreference();
 
         if (grade == 9) {
             coursesToTake.add(CourseType.FRESHMAN_ADVISORY);
@@ -85,6 +92,57 @@ public class CourseGenerator {
                     hasSocialStudies = true;
                 }
             }
+
+            if (courseType.getForeignLangType() != null) {
+
+                hasLang = true;
+
+                if (courseType.getForeignLangType() == ForeignLangType.ITALIAN) {
+
+                    CourseType potentialCourse = CourseType.getForeignLangCourseWithTypeAndLevel(ForeignLangType.ITALIAN, courseType.getLevel() + 1);
+
+                    if (!student.getCompletedCourses().contains(potentialCourse) && potentialCourse != null) {
+
+                        coursesToTake.add(potentialCourse);
+                        currentNumOfCourses++;
+                    }
+
+                }
+
+                if (courseType.getForeignLangType() == ForeignLangType.CHINESE) {
+
+                    CourseType potentialCourse = CourseType.getForeignLangCourseWithTypeAndLevel(ForeignLangType.CHINESE, courseType.getLevel() + 1);
+
+                    if (!student.getCompletedCourses().contains(potentialCourse) && potentialCourse != null) {
+
+                        coursesToTake.add(potentialCourse);
+                        currentNumOfCourses++;
+                    }
+
+                }
+
+                if (courseType.getForeignLangType() == ForeignLangType.FRENCH) {
+
+                    CourseType potentialCourse = CourseType.getForeignLangCourseWithTypeAndLevel(ForeignLangType.FRENCH, courseType.getLevel() + 1);
+
+                    if (!student.getCompletedCourses().contains(potentialCourse) && potentialCourse != null) {
+
+                        coursesToTake.add(potentialCourse);
+                        currentNumOfCourses++;
+                    }
+                }
+
+                if (courseType.getForeignLangType() == ForeignLangType.SPANISH) {
+
+                    CourseType potentialCourse = CourseType.getForeignLangCourseWithTypeAndLevel(ForeignLangType.SPANISH, courseType.getLevel() + 1);
+
+                    if (!student.getCompletedCourses().contains(potentialCourse) && potentialCourse != null) {
+
+                        coursesToTake.add(potentialCourse);
+                        currentNumOfCourses++;
+                    }
+                }
+            }
         }
 
         if (!hasMath && !isMathDone) {
@@ -101,6 +159,16 @@ public class CourseGenerator {
         }
         if (!hasSocialStudies) {
             coursesToTake.add(CourseType.getClassTypeWithLevel(ClassType.SOCIAL_STUDIES, 1));
+            currentNumOfCourses++;
+        }
+
+        if (!hasLang) {
+
+            if (langTypePreference != null) {
+                coursesToTake.add(CourseType.getForeignLangCourseWithTypeAndLevel(langTypePreference, 1));
+            } else {
+                coursesToTake.add(CourseType.getForeignLangCourseWithTypeAndLevel(ForeignLangType.SPANISH, 1));
+            }
             currentNumOfCourses++;
         }
 
@@ -129,5 +197,4 @@ public class CourseGenerator {
             System.out.println(courseType.toString());
         }
     }
-
 }

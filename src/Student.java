@@ -1,4 +1,5 @@
-import enums.coursetype.CourseType;
+import enums.CourseType;
+import enums.ForeignLangType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Student {
     private int grade;
 
     private ArrayList<CourseType> completedCourses;
+    private ForeignLangType langTypePreference;
 
     private ArrayList<CourseType> electives;
     private ArrayList<CourseType> currentCourses;
@@ -22,6 +24,7 @@ public class Student {
         this.dob = dob;
         this.completedCourses = completedCourses;
 
+        electives = new ArrayList<>();
         currentCourses = null;
         schedule = null;
     }
@@ -33,6 +36,7 @@ public class Student {
         this.dob = dob;
         this.grade = grade;
 
+        electives = new ArrayList<>();
         currentCourses = null;
         completedCourses = null;
         schedule = null;
@@ -62,12 +66,32 @@ public class Student {
         return completedCourses;
     }
 
-    public void setElectives(ArrayList<CourseType> electives) {
-        this.electives = electives;
+    public ForeignLangType getLangTypePreference() {
+        return langTypePreference;
     }
 
     public ArrayList<CourseType> getElectives() {
         return electives;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
+
+    public void setElectives(ArrayList<CourseType> electives) {
+        this.electives = electives;
+    }
+
+    public void setLangTypePreference(ForeignLangType langTypePreference) {
+        this.langTypePreference = langTypePreference;
     }
 
     public void setCurrentCourses(ArrayList<CourseType> currentCourses) {
@@ -80,6 +104,10 @@ public class Student {
 
     public void appendCompletedCourse(CourseType courseType) {
         completedCourses.add(courseType);
+    }
+
+    public void appendElective(CourseType courseType) {
+        electives.add(courseType);
     }
 
     public void appendSchedule(Schedule schedule) {

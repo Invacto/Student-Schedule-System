@@ -9,7 +9,6 @@ public class Teacher {
     private LocalDate dob;
     private ArrayList<Period> assignedPeriods;
 
-    //Might scrap the idea of a teacher Schedule,
     private TeacherSchedule schedule;
 
     public Teacher(Name fullName, int id, LocalDate dob, ArrayList<Period> assignedPeriods) {

@@ -1,5 +1,6 @@
 import enums.ClassType;
-import enums.coursetype.CourseType;
+import enums.CourseType;
+import enums.ForeignLangType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Program {
         System.out.println("because of the difficulty and logistic headache of the project :)");
         System.out.println("-----------------------------------");
         System.out.println("Welcome new Student ! Enter the following information:");
-        System.out.print("What is your First name?");
+        System.out.print("What is your First name? ");
 
         String firstName = SCANNER.nextLine();
 
@@ -31,15 +32,15 @@ public class Program {
 
         int birthYear = SCANNER.nextInt();
 
-        System.out.print("Month? (1-12)");
+        System.out.print("Month? (1-12) ");
 
         int birthMonth = SCANNER.nextInt();
 
-        System.out.print("Day of Month? (1-31)");
+        System.out.print("Day of Month? (1-31) ");
 
         int dayOfMonth = SCANNER.nextInt();
 
-        System.out.println("What grade are you entering as? (9-12)");
+        System.out.println("What grade are you entering as? (9-12) ");
 
         int grade = SCANNER.nextInt();
 
@@ -87,7 +88,6 @@ public class Program {
         System.out.print("Please select the LATEST social studies you completed (Only one option) ");
 
         int socialStudiesLevel = SCANNER.nextInt();
-        SCANNER.nextLine();
 
         completedCourses.add(CourseType.getClassTypeWithLevel(ClassType.SOCIAL_STUDIES, socialStudiesLevel));
 
@@ -95,11 +95,67 @@ public class Program {
             completedCourses.add(CourseType.getClassTypeWithLevel(ClassType.ENGLISH, grade - 9));
         }
 
+        if (grade == 9) {
+
+            System.out.println("What is your preferred Foreign Language class? ");
+
+            ForeignLangType[] foreignLangTypes = ForeignLangType.values();
+
+            for (int i = 0; i < foreignLangTypes.length; i++) {
+                System.out.println((i + 1) + ") " + foreignLangTypes[i]);
+            }
+
+            ForeignLangType preferredType = foreignLangTypes[SCANNER.nextInt() - 1];
+
+            student.setLangTypePreference(preferredType);
+        }
+
+        ArrayList<CourseType> electiveCourses = new ArrayList<>();
+
+        for (CourseType courseType : CourseType.values()) {
+
+            if (courseType.isElective()) electiveCourses.add(courseType);
+        }
+
+        boolean hasFinished = false;
+        int counter = 0;
+        while (!hasFinished) {
+
+            System.out.println("Choose an elective (Up to two) (-1 to exit)");
+
+            for (int i = 0; i < electiveCourses.size(); i++) {
+
+                if (electiveCourses.get(i).isElective()) {
+
+                    System.out.println((i + 1) + ") " + electiveCourses.get(i).name());
+                }
+            }
+
+            int input = SCANNER.nextInt();
+
+            if (input == -1)  {
+                hasFinished = true;
+            } else {
+                student.appendElective(electiveCourses.get(input - 1));
+                counter++;
+            }
+
+            if (counter == 2) hasFinished = true;
+        }
+
         student.setCompletedCourses(completedCourses);
 
         CourseGenerator.generateCourse(student);
 
+        System.out.println("All done! Welcome to Brooklyn Technical High School here is a list of your Course this year: ");
+
         CourseGenerator.printCourses(student);
+        ScheduleGenerator.generateSchedule(student);
+
+        System.out.println("-----------------------------");
+        System.out.println("This is your 10 day Cycle Schedule: (Rows are the Period and Columns are the Day Cycle)");
+        student.getSchedule().printSchedule();
+        System.out.println("-----------------------------");
 
     }
 }
